@@ -24,6 +24,7 @@ import org.mortbay.jetty.Server;
 import org.mortbay.jetty.handler.AbstractHandler;
 
 import com.google.common.io.ByteStreams;
+import com.google.common.io.LimitInputStream;
 
 public class GZRangeServer extends AbstractHandler implements Tool {
 	public final static String TOOL_NAME = "gzrange-server";
@@ -160,7 +161,8 @@ public class GZRangeServer extends AbstractHandler implements Tool {
 							response.setContentType("application/octet-stream");
 							response.setStatus(HttpServletResponse.SC_PARTIAL_CONTENT);
 							response.setContentLength((int)gzLength);
-							InputStream lis = ByteStreams.limit(fis, length);
+							LimitInputStream lis = 
+								new LimitInputStream(fis, gzLength);
 							long copied = ByteStreams.copy(lis,
 									response.getOutputStream());
 							if(copied != gzLength) {

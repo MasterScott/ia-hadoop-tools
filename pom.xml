@@ -58,6 +58,12 @@
       <version>0.90.5</version>
       <type>jar</type>
       <scope>provided</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>org.apache.hadoop</groupId>
+          <artifactId>hadoop-core</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>org.apache.cassandra</groupId>
@@ -135,7 +141,7 @@
       </resource>
     </resources>
   </build>
-  <repositories>
+  <!-- repositories>
     <repository>
       <id>internetarchive</id>
       <name>Internet Archive Maven Repository</name>
@@ -153,7 +159,7 @@
         <checksumPolicy>fail</checksumPolicy>
       </snapshots>
     </repository>
-  </repositories>
+  </repositories -->
 
   <distributionManagement>
     <repository>
