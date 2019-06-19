@@ -24,7 +24,8 @@ public class FileBackedInputStream extends FilterInputStream {
 	}
 
 	public InputStream getInputStream() throws IOException {
-		return backer.asByteSource().openStream();
+		//return backer.asByteSource().openStream();
+		return System.in;
 	}
 
 	public void resetBacker() throws IOException {
